@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chart Demo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    </head>
+    <style>
+        * {
+            box-sizing          : border-box;
+            margin              : 0;
+            font-family         : sans-serif;
+        }
+
+        body, html  { height    : 100vh; }
+
+        #head    { 
+            height              : 30vh;
+            background-color    : cadetblue;
+        }
+        #main       { 
+            height              : 70vh;
+            background-color    : cornsilk;
+            position            : relative; /* chartjs RWD requirement */
+        }
+        h1 {
+            text-align          : center;
+        }
+
+    </style>
+<body>
+    <div id="head">
+        <h1>Chart Demo</h1>
+    </div>
+    <div id="main">
+            <canvas id="chartCanvasId"></canvas>
+    </div>
+
+    <script>
+        let names   = ["Mary", "Lisa", "Patricia", "Linda", "Susan"]
+        let numbers = [407, 250, 245, 241, 214]
+
+        let chartCanvas  = document.getElementById('chartCanvasId')
+        let chartContext = chartCanvas.getContext('2d')
+
+        let myChart = new Chart(chartContext, {
+            type: 'bar',
+            data: {
+                labels: names,
+                datasets: [{
+                    label: 'Number of Babies Named...',
+                    data: numbers,
+                    backgroundColor:[
+                        '#aaa',
+                        '#bbb',
+                        '#ccc',
+                        '#ddd',
+                        '#eee',
+                    ]
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Most Popular Girl Names from Alabama in 1960"
+                },
+                responsive: true,           // chartjs RWD requirement
+                maintainAspectRatio: false  // chartjs RWD requirement
+            }
+        });
+        </script>
+    
+</body>
+</html>
